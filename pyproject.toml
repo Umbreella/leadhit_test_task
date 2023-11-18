@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "leadhit-test-task"
+version = "0.1.0"
+description = ""
+authors = ["Umbreella <draginvadim@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.0.3"
+motor = "^3.3.2"
+fastapi = "^0.104.1"
+uvicorn = { extras = ["standard"], version = "^0.24.0.post1" }
+email-validator = "^2.1.0.post1"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.4.0"
+flake8 = "^6.1.0"
+flake8-broken-line = "^1.0.0"
+flake8-commas = "^2.1.0"
+flake8-quotes = "^3.3.2"
+isort = "^5.12.0"
+
+
+[tool.poetry.group.test.dependencies]
+httpx = "^0.25.1"
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+pytest-cov = "^4.1.0"
+
+
+[tool.isort]
+multi_line_output = 5
+include_trailing_comma = "true"
+
+
+[tool.coverage.run]
+concurrency = "greenlet"
+source = "."
+omit = [
+    "./*venv/*",
+    "*/__init__.py",
+    "./*.py",
+    "./app/asgi/*",
+    "./tests/*",
+]
+[tool.coverage.report]
+omit = [
+    "./*venv/*",
+    "*/__init__.py",
+    "./*.py",
+    "./app/asgi/*",
+    "./tests/*",
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
